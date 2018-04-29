@@ -28,12 +28,10 @@ RUN apk --no-cache add perl wget xz tar fontconfig-dev && \
     rm -fr /tmp/install-tl-unx && \
     apk --no-cache del xz tar fontconfig-dev
 
-RUN apk --no-cache add bash
-
 RUN mkdir /workdir
 
 WORKDIR /workdir
 
 VOLUME ["/workdir"]
 
-CMD ["bash"]
+CMD ["sh"]
