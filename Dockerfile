@@ -7,18 +7,18 @@ FROM frolvlad/alpine-glibc
 
 MAINTAINER 3846masa
 
-ENV PATH /usr/local/texlive/2017/bin/x86_64-linux:$PATH
+ENV PATH /usr/local/texlive/2018/bin/x86_64-linuxmusl:$PATH
 
 RUN apk --no-cache add perl wget xz tar fontconfig-dev && \
     mkdir /tmp/install-tl-unx && \
-    wget -qO- ftp://tug.org/texlive/historic/2017/install-tl-unx.tar.gz | \
+    wget -qO- ftp://tug.org/texlive/historic/2018/install-tl-unx.tar.gz | \
     tar -xz -C /tmp/install-tl-unx --strip-components=1 && \
     printf "%s\n" \
       "selected_scheme scheme-basic" \
       "option_doc 0" \
       "option_src 0" \
       > /tmp/install-tl-unx/texlive.profile && \
-    /tmp/install-tl-unx/install-tl \
+    /tmp/install-tl-unx/install-tl -repository ftp://ftp.gwdg.de/pub/ctan/systems/texlive/tlnet/ \
       --profile=/tmp/install-tl-unx/texlive.profile && \
     tlmgr install \
       collection-basic collection-latex \
