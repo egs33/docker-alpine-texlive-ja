@@ -18,7 +18,7 @@ RUN apk --no-cache add perl wget xz tar fontconfig-dev && \
       "option_doc 0" \
       "option_src 0" \
       > /tmp/install-tl-unx/texlive.profile && \
-    /tmp/install-tl-unx/install-tl -repository ftp://ftp.gwdg.de/pub/ctan/systems/texlive/tlnet/ \
+    /tmp/install-tl-unx/install-tl \
       --profile=/tmp/install-tl-unx/texlive.profile && \
     tlmgr install \
       collection-basic collection-latex \
